@@ -14,7 +14,6 @@ public class UserServiceImpl implements UserService {
 	/* (non-Javadoc)
 	 * @see com.watts.service.UserService#userAndPassFiltering(java.lang.String, java.lang.String)
 	 */
-	@Override
 	public User userAndPassFiltering(String user, String pass) {
 		// Does user and pass are according to filter...
 		

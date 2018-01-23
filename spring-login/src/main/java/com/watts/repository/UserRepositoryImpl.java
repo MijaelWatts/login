@@ -7,7 +7,6 @@ public class UserRepositoryImpl implements UserRepository {
 	/* (non-Javadoc)
 	 * @see com.watts.repository.UserRepository#findSpecificUser(java.lang.String, java.lang.String)
 	 */
-	@Override
 	public User findSpecificUser(String user, String pass){
 		//Query to DB
 		
