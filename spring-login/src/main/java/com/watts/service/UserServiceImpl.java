@@ -1,8 +1,11 @@
 package com.watts.service;
 
+import org.springframework.stereotype.Service;
+
 import com.watts.repository.User;
 import com.watts.repository.UserRepository;
 
+@Service
 public class UserServiceImpl implements UserService {
 	
 	private UserRepository userRepository;
