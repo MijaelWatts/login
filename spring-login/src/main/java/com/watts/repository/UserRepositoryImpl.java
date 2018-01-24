@@ -1,5 +1,8 @@
 package com.watts.repository;
 
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class UserRepositoryImpl implements UserRepository {	
 	
 	private User userInstance = new User();
