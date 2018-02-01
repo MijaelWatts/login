@@ -1,13 +1,15 @@
 package com.watts.controller;
 
 import org.apache.commons.lang.StringUtils;
+import org.springframework.util.Assert;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.watts.repository.User;
 import com.watts.service.UserService;
+import com.watts.user.service.LoginRequest;
+import com.watts.user.service.LoginResponse;
 
 @RestController
 public class UserController {
@@ -18,19 +20,13 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@RequestMapping("/signIn")
-	public User credentialsNotBlank(
-		@RequestParam(value="user", required=true) String user,
-		@RequestParam(value="pass", required=true) String pass
-	) {
-		boolean userNotBlank = StringUtils.isNotBlank(user);
-		boolean passNotBlank = StringUtils.isNotBlank(pass);
+	@RequestMapping(value = "/signIn", method = RequestMethod.POST)
+	public LoginResponse signIn(@RequestBody LoginRequest login) {		
+		Assert.isTrue(StringUtils.isNotBlank(login.getUser()), "User must not be blank.");
+		Assert.isTrue(StringUtils.isNotBlank(login.getPassword()), "Password must not be blank.");
 		
-		if(userNotBlank && passNotBlank) {
-			return userService.userAndPassFiltering(user, pass);
-		}
 		
-		return null;
+		return userService.userAndPassFiltering(login.getUser(), login.getPassword());
 	}
 
 }
