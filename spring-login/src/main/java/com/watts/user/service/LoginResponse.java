@@ -1,7 +1,7 @@
-package com.watts.repository;
+package com.watts.user.service;
 
 
-public class User {
+public class LoginResponse {
 	private String firstName;
 	private String lastName;
 	
