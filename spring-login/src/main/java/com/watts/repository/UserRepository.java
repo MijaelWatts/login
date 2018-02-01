@@ -1,7 +1,9 @@
 package com.watts.repository;
 
+import com.watts.user.service.LoginResponse;
+
 public interface UserRepository {
 
-	User findSpecificUser(String user, String pass);
+	LoginResponse findSpecificUser(String user, String pass);
 
 }

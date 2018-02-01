@@ -1,9 +1,9 @@
 package com.watts.service;
 
-import com.watts.repository.User;
+import com.watts.user.service.LoginResponse;
 
 public interface UserService {
 
-	User userAndPassFiltering(String user, String pass);
+	LoginResponse userAndPassFiltering(String user, String pass);
 
 }
