@@ -10,28 +10,34 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import com.watts.controller.UserController;
 import com.watts.service.UserServiceImpl;
 import com.watts.user.service.LoginRequest;
 import com.watts.user.service.LoginResponse;
 
 @RunWith(MockitoJUnitRunner.class)
+//@RunWith(SpringJUnit4ClassRunner.class)
+//@WebAppConfiguration
 public class UserControllerTest {
 	
 	@InjectMocks private UserController userController;
 	
 	@Mock private UserServiceImpl userService;
-//	private MockMvc mvc;
+	
+//	private MockMvc mockMvc;
 	
 	private final static String USER = "W@tts";
 	private final static String PASS = "(takeUrT1me)";
 	private final static String FIRST_NAME = "Mijael";
 	private final static String LAST_NAME = "Watts";	
 	
-//	@Before
-//	public void setUp() {
-//		mvc = MockMvcBuilders.standaloneSetup(userController).setControllerAdvice(new ErrorController()).build();
-//	}
+	/*
+	@Before
+	public void setUp() {
+//		mockMvc = MockMvcBuilders.standaloneSetup(userController).setControllerAdvice(new ErrorController()).build();
+		MockitoAnnotations.initMocks(this);
+		
+		mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
+	}*/
 	
 	@Test 
 	public void validateCorrectResponseWhenCredentialsNotBlank() {
@@ -63,13 +69,24 @@ public class UserControllerTest {
 		userController.signIn(login);
 	}
 	
-//	@Test(expected=IllegalArgumentException.class) 
-//	public void validateBlankCredentialsErrorWhenCredentialsAreBlank2() {
-//		LoginRequest login = new LoginRequest();
-//		login.setUser("");
-//		login.setPassword("");
-//		
-//	}
+	/*
+	@Test
+	public void validateBlankCredentialsErrorWhenCredentialsAreBlank2() throws Exception {
+		String USER_REQUEST = "{\"user\" : \"\", \"password\" : \"\"}";
+//		LoginRequest loginRequest = new LoginRequest(USER, PASS);
+
+//		when(userController.signIn(loginRequest)).thenThrow(IllegalArgumentException.class);
+		
+//		MediaType APPLICATION_JSON_UTF8 = new MediaType(
+//				MediaType.APPLICATION_JSON.getType(),
+//				MediaType.APPLICATION_JSON.getSubtype(), Charset.forName("utf8"));
+		
+		mockMvc.perform(post("/signIn")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(USER_REQUEST))
+			.andExpect((ResultMatcher) jsonPath("$errorMessage", is("UserAnd Pass")));
+	}
+	*/
 	
 	private LoginResponse createCorrectReturnedObject() {
 		LoginResponse user = new LoginResponse();
