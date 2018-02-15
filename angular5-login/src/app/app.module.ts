@@ -4,7 +4,7 @@ import { NgbModule }                  from '@ng-bootstrap/ng-bootstrap';
 // import { TabsModule }				  from 'ngx-bootstrap/tabs';
 
 import { HeaderComponent } from './header/header.component';
-import { BodyComponent } from './body/body.component';
+import { LoginComponent } from './body/login.component';
 import { FooterComponent } from './footer/footer.component';
 
 import { AppComponent } from './app.component';
@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    BodyComponent,
+    LoginComponent,
     FooterComponent,
     AppComponent
   ],

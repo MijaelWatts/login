@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template: `
     <header-component></header-component>
-    <body-component></body-component>
+    <login-component></login-component>
     <footer-component></footer-component>
   `
 })
