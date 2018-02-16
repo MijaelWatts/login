@@ -1,12 +1,12 @@
-import { BrowserModule }              from '@angular/platform-browser';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
-import { NgbModule }                  from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 // import { TabsModule }				  from 'ngx-bootstrap/tabs';
 
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './body/login.component';
 import { FooterComponent } from './footer/footer.component';
-
 import { AppComponent } from './app.component';
 
 @NgModule({
@@ -18,7 +18,8 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    ReactiveFormsModule
     // TabsModule.forRoot()
   ],
   schemas:[ NO_ERRORS_SCHEMA ],
