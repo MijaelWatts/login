@@ -8,18 +8,32 @@ import { User } from '../interfaces/user.interface';
 })
 
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  loginForm : FormGroup;
+  email     : FormControl;
+  password  : FormControl;
+
 
   ngOnInit() { 
+    this.createFormControls();
+    this.createForm();
+  }
+
+  createFormControls() {
+    this.email = new FormControl('', [
+      Validators.required,
+      Validators.email
+    ]);
+
+    this.password = new FormControl('', [
+      Validators.required,
+      Validators.minLength(7)
+    ]);
+  }
+
+  createForm() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.email
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(4)
-      ])
+      email    : this.email,
+      password : this.password
     });
   }
 

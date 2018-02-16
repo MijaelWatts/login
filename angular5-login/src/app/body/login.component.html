@@ -4,26 +4,26 @@
       
       <div class="form-group"
         [ngClass] = "{
-          'has-success': loginForm.controls.email.valid && (loginForm.controls.email.dirty || loginForm.controls.email.touched),
-          'has-danger': loginForm.controls.email.invalid && (loginForm.controls.email.dirty || loginForm.controls.email.touched)
+          'has-success': email.valid && (email.dirty || email.touched),
+          'has-danger': email.invalid && (email.dirty || email.touched)
         }"
       >
         <label for="exampleInputEmail1">Email</label>
         <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email">
       </div>
-      <pre>Dirty? {{ loginForm.controls.email.dirty }}</pre>
-      <pre>Pristine? {{ loginForm.controls.email.pristine }}</pre>
-      <pre>Touched? {{ loginForm.controls.email.touched }}</pre>
-      <pre>Untouched? {{ loginForm.controls.email.untouched }}</pre>
-      <pre>Valid? {{ loginForm.controls.email.valid }}</pre>
-      <pre>Invalid? {{ loginForm.controls.email.invalid }}</pre>
+      <pre>Dirty? {{ email.dirty }}</pre>
+      <pre>Pristine? {{ email.pristine }}</pre>
+      <pre>Touched? {{ email.touched }}</pre>
+      <pre>Untouched? {{ email.untouched }}</pre>
+      <pre>Valid? {{ email.valid }}</pre>
+      <pre>Invalid? {{ email.invalid }}</pre>
       
       <div class="form-group">
         <label for="exampleInputPassword1">Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password" formControlName="password">
       </div>
-      <pre>Valid? {{ loginForm.controls.password.valid }}</pre>
-      <pre>Invalid? {{ loginForm.controls.password.invalid }}</pre>     
+      <pre>Valid? {{ password.valid }}</pre>
+      <pre>Invalid? {{ password.invalid }}</pre>     
       
       <button type="submit" class="btn btn-primary" [disabled]="true">Submit</button>
     
