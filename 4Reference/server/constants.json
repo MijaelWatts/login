@@ -1,0 +1,7 @@
+{
+    "LOG_FILE"   : "log.txt",
+    "ERROR"      : "error",
+    "INFO"       : "info",
+    "WARN"       : "warn",
+    "MONTH_NAME" : ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+}

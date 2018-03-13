@@ -1,0 +1,4 @@
+#MW ignored modules
+node_modules
+
+/ui/dist/*
