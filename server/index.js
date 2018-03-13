@@ -18,19 +18,24 @@ xprs.get('/', (req, res) => {
 });
 
 xprs.post('/login', (req, res) => {
-  let user = req.body.user === 'mw' ? true : false;
-  let pass = req.body.pass === 'mijaelwatts' ? true : false;
-
-  if (user && pass) {
-      res.json({msg : 'access granted.'});
-  } else {
-      res.json({msg : 'access not granted.'});
-  }
+  let response = validateUserAndPassword(req);
+  res.json(response);
 });
 
 xprs.listen(configs.port, () => {
   console.info("... Server listening on http://" + xprs.get('hostname') + ":" + xprs.get('port'));
 });
+
+function validateUserAndPassword(req) {
+  let user = req.body.user === 'mw' ? true : false;
+  let pass = req.body.pass === 'mijaelwatts' ? true : false;
+
+  if (user && pass) {
+      return {msg : 'access granted.'};
+  } else {
+      return {msg : 'access not granted.'};
+  }
+}
 
 module.exports = xprs;
 
