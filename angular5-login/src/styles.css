@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+input:invalid {
+  /* background-color: #ffdddd; */
+  /* border-color: red;
+  border-width: 1px; */
+}
+
+input:valid {
+  /* background-color: #ddffdd; */
+  /* border-color: yellowgreen;
+  border-width: 1px; */
+}
+
+input:required {
+  /* border-color: #800000;
+  border-width: 3px; */
+}
+
+input:required:invalid {
+  /* border-color: #C00000; */
+}
+
+.validInput {
+  border-color: yellowgreen;
+  border-width: 1px;
+}
+
+.invalidInput {
+  border-color: red;
+  border-width: 1px;
+}
