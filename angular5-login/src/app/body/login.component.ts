@@ -8,12 +8,13 @@ import { User } from '../interfaces/user.interface';
 })
 
 export class LoginComponent implements OnInit {
-  loginForm : FormGroup;
-  email     : FormControl;
-  password  : FormControl;
+  private loginForm : FormGroup;
+  private email     : FormControl;
+  private password  : FormControl;
 
+	private inputCss: String = '';
 
-  ngOnInit() { 
+  ngOnInit() {
     this.createFormControls();
     this.createForm();
   }
@@ -21,7 +22,8 @@ export class LoginComponent implements OnInit {
   createFormControls() {
     this.email = new FormControl('', [
       Validators.required,
-      Validators.email
+      Validators.email,
+      Validators.minLength(3)
     ]);
 
     this.password = new FormControl('', [
@@ -36,5 +38,9 @@ export class LoginComponent implements OnInit {
       password : this.password
     });
   }
+
+	showErrors() {
+		console.log(this.email.errors);
+	}
 
 }
