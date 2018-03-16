@@ -2,17 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { User } from '../interfaces/user.interface';
 
-@Component({
-	selector: 'login-component',
-	templateUrl: './login.component.html'
-})
-
+@Component({selector: 'login-component', templateUrl: './login.component.html'})
 export class LoginComponent implements OnInit {
-  private loginForm : FormGroup;
-  private email     : FormControl;
-  private password  : FormControl;
-
-	private inputCss: String = '';
+  private loginFormGroup   : FormGroup;
+  private emailFormControl : FormControl;
+  private pwdFormControl   : FormControl;
 
   ngOnInit() {
     this.createFormControls();
@@ -20,27 +14,27 @@ export class LoginComponent implements OnInit {
   }
 
   createFormControls() {
-    this.email = new FormControl('', [
+    this.emailFormControl = new FormControl('', [
       Validators.required,
-      Validators.email,
-      Validators.minLength(3)
+      Validators.email
     ]);
 
-    this.password = new FormControl('', [
+    this.pwdFormControl = new FormControl('', [
       Validators.required,
       Validators.minLength(7)
     ]);
   }
 
   createForm() {
-    this.loginForm = new FormGroup({
-      email    : this.email,
-      password : this.password
+    this.loginFormGroup = new FormGroup({
+      emailFormControl : this.emailFormControl,
+      pwdFormControl   : this.pwdFormControl
     });
   }
 
-	showErrors() {
-		console.log(this.email.errors);
-	}
+  submitEmailAndPassword() {
+    console.info("Email: ");
+    console.info("Password: ");
+  }
 
 }

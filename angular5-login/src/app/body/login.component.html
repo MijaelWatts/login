@@ -1,44 +1,44 @@
 <div class="container my-5">
   <div class="row">
-    <form class="col-sm-4 mx-auto" [formGroup]="loginForm" novalidate>
+    <form class="col-sm-4 mx-auto" [formGroup]="loginFormGroup" novalidate>
 
       <div class="form-group">
-        <label for="exampleInputEmail1">Email</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" formControlName="email" required [ngClass]="{
-          validInput   : email.valid && email.dirty,
-          invalidInput : email.invalid && email.dirty
+        <label for="emailInputBox">Email</label>
+        <input type="email" class="form-control" id="emailInputBox" aria-describedby="emailHelp" placeholder="Enter email" formControlName="emailFormControl" required [ngClass]="{
+          validInput   : emailFormControl.valid && emailFormControl.dirty,
+          invalidInput : emailFormControl.invalid && emailFormControl.dirty
         }">
-        <div style="color:red" *ngIf="email.errors && (email.dirty || email.touched)">
-          <small *ngIf="email.errors.minlength">Email is required.</small>
-          <small *ngIf="email.errors.email">Email is not valid.</small>
+        <div style="color:red" *ngIf="emailFormControl.errors && (emailFormControl.dirty || emailFormControl.touched)">
+          <small *ngIf="emailFormControl.errors.required">Email is required.</small>
+          <small *ngIf="emailFormControl.errors.email && !emailFormControl.errors.required">Email is not valid.</small>
         </div>
       </div>
       <!-- <pre>Dirty? {{ email.dirty }}</pre> -->
       <!-- <pre>Pristine? {{ email.pristine }}</pre> -->
       <!-- <pre>Touched? {{ email.touched }}</pre> -->
       <!-- <pre>Untouched? {{ email.untouched }}</pre> -->
-      <!-- <pre>Valid? {{ email.valid }}</pre> -->
-      <!-- <pre>Invalid? {{ email.invalid }}</pre> -->
+      <!-- <pre>Valid? {{ emailFormControl.valid }}</pre> -->
+      <pre>Invalid? {{ emailFormControl.invalid }}</pre>
 
       <div class="form-group">
-        <label for="exampleInputPassword1">Password</label>
-        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter password" formControlName="password" required [ngClass]="{
-          validInput   : password.valid && password.dirty,
-          invalidInput : password.invalid && password.dirty
+        <label for="passwordInputBox">Password</label>
+        <input type="password" class="form-control" id="passwordInputBox" placeholder="Enter password" formControlName="pwdFormControl" required [ngClass]="{
+          validInput   : pwdFormControl.valid && pwdFormControl.dirty,
+          invalidInput : pwdFormControl.invalid && pwdFormControl.dirty
         }">
-        <div style="color:red" *ngIf="password.errors && (password.dirty || password.touched)">
-          <small *ngIf="password.errors.required">Password is required.</small>
-          <small *ngIf="password.errors.minlength">Password must be 7 characters long.</small>
+        <div style="color:red" *ngIf="pwdFormControl.errors && (pwdFormControl.dirty || pwdFormControl.touched)">
+          <small *ngIf="pwdFormControl.errors.required">Password is required.</small>
+          <small *ngIf="pwdFormControl.errors.minlength">Password must be 7 characters long.</small>
         </div>
       </div>
-      <!-- <pre>Valid? {{ password.valid }}</pre> -->
-      <!-- <pre>Invalid? {{ password.invalid }}</pre> -->
-      <!-- <pre>Errors required? {{ password.errors.required }}</pre>
-      <pre>Errors min? {{ password.errors.minlength }}</pre> -->
+      <!-- <pre>Valid? {{ pwdFormControl.valid }}</pre> -->
+      <pre>Invalid? {{ pwdFormControl.invalid }}</pre>
+      <!-- <pre>Errors required? {{ pwdFormControl.errors.required }}</pre>
+      <pre>Errors min? {{ pwdFormControl.errors.minlength }}</pre> -->
 
-      <button class="btn btn-primary" (click)="showErrors()">Submit</button>
+      <button type="submit" class="btn btn-primary" (click)="submitEmailAndPassword()" [disabled]="emailFormControl.invalid && pwdFormControl.invalid">Submit</button>
 
-      <!-- <pre>{{loginForm.value | json}}</pre> -->
+      <!-- <pre>{{loginFormGroup.value | json}}</pre> -->
 
     </form>
   </div>
