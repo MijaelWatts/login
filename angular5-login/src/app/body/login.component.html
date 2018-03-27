@@ -7,10 +7,11 @@
         <input type="email" class="form-control" id="emailInputBox" aria-describedby="emailHelp" placeholder="Enter email" formControlName="emailFormControl" required [ngClass]="{
           validInput   : emailFormControl.valid && emailFormControl.dirty,
           invalidInput : emailFormControl.invalid && emailFormControl.dirty
-        }">
+        }" (ngModelChange)="disableSubmitButton()">
         <div style="color:red" *ngIf="emailFormControl.errors && (emailFormControl.dirty || emailFormControl.touched)">
-          <small *ngIf="emailFormControl.errors.required">Email is required.</small>
-          <small *ngIf="emailFormControl.errors.email && !emailFormControl.errors.required">Email is not valid.</small>
+          <!-- <small *ngIf="emailFormControl.errors.required">Email is required.</small>
+          <small *ngIf="emailFormControl.errors.email && !emailFormControl.errors.required">Email is not valid.</small> -->
+          <!-- <small>{{ emailErrorMessage }}</small> -->
         </div>
       </div>
       <!-- <pre>Dirty? {{ email.dirty }}</pre> -->
@@ -18,26 +19,26 @@
       <!-- <pre>Touched? {{ email.touched }}</pre> -->
       <!-- <pre>Untouched? {{ email.untouched }}</pre> -->
       <!-- <pre>Valid? {{ emailFormControl.valid }}</pre> -->
-      <pre>Invalid? {{ emailFormControl.invalid }}</pre>
+      <!-- <pre>Invalid? {{ emailFormControl.invalid }}</pre> -->
 
       <div class="form-group">
         <label for="passwordInputBox">Password</label>
         <input type="password" class="form-control" id="passwordInputBox" placeholder="Enter password" formControlName="pwdFormControl" required [ngClass]="{
           validInput   : pwdFormControl.valid && pwdFormControl.dirty,
           invalidInput : pwdFormControl.invalid && pwdFormControl.dirty
-        }">
+        }" (ngModelChange)="validatePasswordInput()">
         <div style="color:red" *ngIf="pwdFormControl.errors && (pwdFormControl.dirty || pwdFormControl.touched)">
-          <small *ngIf="pwdFormControl.errors.required">Password is required.</small>
-          <small *ngIf="pwdFormControl.errors.minlength">Password must be 7 characters long.</small>
+          <small>{{ pwdErrorMessage }}</small>
         </div>
       </div>
       <!-- <pre>Valid? {{ pwdFormControl.valid }}</pre> -->
-      <pre>Invalid? {{ pwdFormControl.invalid }}</pre>
+      <!-- <pre>Invalid? {{ pwdFormControl.invalid }}</pre> -->
       <!-- <pre>Errors required? {{ pwdFormControl.errors.required }}</pre>
       <pre>Errors min? {{ pwdFormControl.errors.minlength }}</pre> -->
 
-      <button type="submit" class="btn btn-primary" (click)="submitEmailAndPassword()" [disabled]="emailFormControl.invalid && pwdFormControl.invalid">Submit</button>
+      <button type="submit" class="btn btn-primary" (click)="submitEmailAndPassword()" [disabled]="disableButtonProp">Submit</button>
 
+      <!-- <pre>disabled? {{ disableButtonProp }}</pre> -->
       <!-- <pre>{{loginFormGroup.value | json}}</pre> -->
 
     </form>
